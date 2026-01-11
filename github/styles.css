@@ -1,0 +1,293 @@
+:root {
+  --pink-main: #ECB3B9;
+  --pink-soft: #F3D0D6;
+
+  --brown: #74543F;
+  --text-light: #F2E3E6;
+  --text-muted-dark: #C9A3A9;
+
+  --card-bg: rgba(255, 255, 255, 0.35);
+  --card-header: rgba(255, 255, 255, 0.45);
+
+  --highlight: rgba(236, 179, 185, 0.6);
+
+  --radius-lg: 20px;
+  --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ✅ prevents the “cut off on the right” issue when padding exists */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Prevent tiny accidental horizontal scroll from anything */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* --------------------
+   DESKTOP (DEFAULT)
+-------------------- */
+
+body {
+  font-family: "Amiko", sans-serif;
+  background: linear-gradient(180deg, var(--pink-main), var(--pink-soft));
+  color: var(--text-light);
+}
+
+#container {
+  max-width: 1200px;
+  min-width: 900px;
+  margin: 0 auto;
+  padding: 30px 26px 20px;
+}
+
+/* --------------------
+   Banner
+-------------------- */
+
+#banner {
+  width: 1100px;
+  height: 250px;
+  margin: 0 auto 28px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+
+  /* Optional image later */
+  /* background: url("images/banner.jpg") center / cover no-repeat; */
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.15)
+  );
+
+  box-shadow: var(--shadow-soft);
+}
+
+/* Banner text */
+
+.banner__text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+  padding: 12px;
+}
+
+.banner__name {
+  font-family: "Alex Brush", cursive;
+  font-size: 76px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--brown);
+}
+
+.banner__tagline {
+  margin-top: 6px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--text-muted-dark);
+}
+
+/* --------------------
+   Floating Petals
+-------------------- */
+
+.petal {
+  position: absolute;
+  width: 16px;
+  height: 12px;
+  border-radius: 999px 999px 999px 0;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  animation: fall 7s linear infinite;
+  z-index: 1;
+}
+.petal:hover {
+  cursor: pointer;
+  animation-play-state: paused;
+  transform: scale(1.25) rotate(25deg);
+  transition: transform 200ms ease;
+}
+
+
+/* Percent-based so they adapt when resized */
+.petal--1 { left: 8%; top: -40px; animation-delay: 0s; opacity: 0.7; }
+.petal--2 { left: 26%; top: -60px; animation-delay: 1.3s; opacity: 0.6; }
+.petal--3 { left: 50%; top: -30px; animation-delay: 2.1s; opacity: 0.75; }
+.petal--4 { left: 72%; top: -70px; animation-delay: 0.9s; opacity: 0.65; }
+.petal--5 { left: 92%; top: -50px; animation-delay: 1.7s; opacity: 0.7; }
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(10deg); }
+  50% { transform: translateY(150px) translateX(-12px) rotate(45deg); }
+  100% { transform: translateY(300px) translateX(10px) rotate(80deg); opacity: 0; }
+}
+
+/* --------------------
+   Main Layout (4 columns)
+-------------------- */
+
+main {
+  display: flex;
+  gap: 28px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* --------------------
+   Cards
+-------------------- */
+
+.card {
+  flex: 1;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.card__title {
+  margin: 0;
+  padding: 14px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  background: var(--card-header);
+  color: var(--brown);
+}
+
+.card__list {
+  list-style: none;
+  margin: 0;
+  padding: 14px 18px 18px;
+}
+
+.card__list li {
+  border-bottom: 1px solid rgba(116, 84, 63, 0.35);
+}
+
+.card__list li:last-child {
+  border-bottom: none;
+}
+
+.card__list a {
+  display: inline-block;
+  margin: 10px 6px;
+  padding: 4px 8px;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  color: var(--brown);
+  border-radius: 10px;
+  transition: background-color 180ms ease;
+}
+
+.card__list a:hover,
+.card__list a:focus-visible {
+  background-color: var(--highlight);
+  outline: none;
+}
+
+/* --------------------
+   Footer
+-------------------- */
+
+footer {
+  margin-top: 24px;
+  padding: 16px 0 6px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted-dark);
+}
+
+.footer__dot {
+  margin: 0 10px;
+}
+
+.footer__link {
+  color: var(--text-muted-dark);
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  text-decoration: none;
+  border-bottom: 1px solid var(--text-muted-dark);
+  outline: none;
+}
+
+/* =================================================
+   Responsive ONLY when minimized
+   (desktop stays the same)
+================================================= */
+
+/* Let the layout shrink without forcing horizontal scroll */
+@media (max-width: 1200px) {
+  #container {
+    min-width: 0;
+    width: 100%;
+    padding: 24px 18px 18px; /* tighter padding so it fits */
+  }
+
+  #banner {
+    width: 100%;
+    max-width: 1100px;
+  }
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1000px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+}
+
+/* Mobile: stack vertically + make sure there’s room on both sides */
+@media (max-width: 700px) {
+  #container {
+    padding: 18px 14px 16px;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  #banner {
+    height: 220px;
+  }
+
+  .banner__name {
+    font-size: 54px;
+  }
+
+  .banner__tagline {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+
+  .card__title {
+    font-size: 26px;
+  }
+}
