@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Experiment 1</title>
+</head>
+<body>
+
+    <h1>Experiment 1</h1>
+    <h2>Open the browser console to see output</h2>
+
+    <script>
+        /*
+        This program prints a triangle made of # symbols to the console.
+        Each line adds one more # than the previous line, for a total of seven lines.
+        */
+
+        // SEQUENCE: create variables needed for the program
+        let symbol = "#";
+        let output = "";
+
+        // LOOP: repeat the process seven times
+        for (let i = 1; i <= 7; i++) {
+
+            // SELECTION: decide when to add another symbol
+            if (i <= 7) {
+                output = output + symbol;
+            }
+
+            console.log(output);
+        }
+    </script>
+
+</body>
+</html>
