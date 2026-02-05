@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title> Spring Mad Libs 2.0 | Sakura Day</title>
+
+  <link rel="stylesheet" href="normalize.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- deco petal -->
+  <div class="petal-scene" aria-hidden="true">
+    <span class="petal p1"></span>
+    <span class="petal p2"></span>
+    <span class="petal p3"></span>
+    <span class="petal p4"></span>
+    <span class="petal p5"></span>
+    <span class="petal p6"></span>
+    <span class="petal p7"></span>
+    <span class="petal p8"></span>
+    <span class="petal p9"></span>
+    <span class="petal p10"></span>
+    <span class="petal p11"></span>
+    <span class="petal p12"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="brand">
+      <h1>Mad Libs 2.0</h1>
+      <p class="tag">Sakura Edition 🌸</p>
+    </div>
+    <p class="subhead">Think of 6 words. Hit “Bloom.” Get a spring story.</p>
+  </header>
+
+  <main class="wrap">
+    <div class="panel">
+      <figure class="art">
+        <img
+          src="images/sakura.png"
+          width="520"
+          height="520"
+          alt="Hand-drawn sakura illustration"
+        />
+      </figure>
+
+      <section class="formzone" aria-label="Mad Lib form">
+        <h2 class="panel-title">Fill the blanks</h2>
+        <p class="microcopy">
+          All fields required. Your words will be highlighted in the final story.
+        </p>
+
+        <form id="madForm" novalidate>
+          <div class="grid">
+            <label for="adj1">Adjective</label>
+            <input id="adj1" type="text" required placeholder="sparkly" />
+
+            <label for="noun1">Noun</label>
+            <input id="noun1" type="text" required placeholder="umbrella" />
+
+            <label for="verb1">Verb</label>
+            <input id="verb1" type="text" required placeholder="twirl" />
+
+            <label for="adverb1">Adverb</label>
+            <input id="adverb1" type="text" required placeholder="politely" />
+
+            <label for="place">Place</label>
+            <input id="place" type="text" required placeholder="forest" />
+
+            <label for="noun2">Noun (snack/thing)</label>
+            <input id="noun2" type="text" required placeholder="mochi" />
+          </div>
+
+          <div class="actions">
+            <input type="submit" value="Bloom the story" />
+            <button type="button" id="resetBtn">Reset</button>
+          </div>
+
+          <p class="fineprint">Tip: short words look best in the highlight style.</p>
+        </form>
+      </section>
+    </div>
+
+    <!-- overlay -->
+    <section class="overlay" id="overlay" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+        <div class="modal-top">
+          <h2 id="resultTitle">Your Story</h2>
+          <button type="button" class="icon" id="closeBtn" aria-label="Close">✕</button>
+        </div>
+
+        <p class="story" id="storyOut">
+          <span class="muted">Your story will appear here after you submit.</span>
+        </p>
+
+        <div class="modal-actions">
+          <button type="button" class="primary" id="againBtn">Make another</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
