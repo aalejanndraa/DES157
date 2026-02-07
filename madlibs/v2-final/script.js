@@ -21,12 +21,10 @@
 
   function openOverlay() {
     overlay.classList.add("active");
-    overlay.setAttribute("aria-hidden", "false");
   }
 
   function closeOverlay() {
     overlay.classList.remove("active");
-    overlay.setAttribute("aria-hidden", "true");
   }
 
   form.addEventListener("submit", function (event) {
@@ -49,18 +47,18 @@
     const article = getArticle(adj1);
 
     storyOut.innerHTML = `
-        It was ${article} ${wrapWord(adj1)} afternoon at ${wrapWord(place)}, and the weather finally felt like spring. I was walking along with my ${wrapWord(noun1)}, not really paying attention, when a few cherry blossom petals started falling around me.
+      It was ${article} ${wrapWord(adj1)} afternoon at ${wrapWord(place)}, and the weather finally felt like spring.
+      I was walking along with my ${wrapWord(noun1)}, not really paying attention, when a few cherry blossom petals started falling around me.
 
-    <br><br>
+      <br><br>
 
-        It felt like one of those moments where everything slows down a little,
-        so I decided to ${wrapWord(verb1)} ${wrapWord(adverb1)} and just enjoy it.
-        Then ${wrapWord(noun2)} showed up unexpectedly, which somehow made the whole
-        moment even better.
+      It felt like one of those moments where everything slows down a little,
+      so I decided to ${wrapWord(verb1)} ${wrapWord(adverb1)} and just enjoy it.
+      Then ${wrapWord(noun2)} showed up unexpectedly, which somehow made the whole moment even better.
 
-    <br><br>
+      <br><br>
 
-        Sometimes spring doesn’t need a reason — it just happens.
+      Sometimes spring doesn’t need a reason — it just happens.
     `;
 
     openOverlay();
