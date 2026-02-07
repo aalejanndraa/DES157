@@ -17,8 +17,8 @@
 </head>
 
 <body>
-  <!-- deco petals -->
-  <div class="petal-scene" aria-hidden="true">
+  <!-- decorative petals -->
+  <div class="petal-scene">
     <span class="petal p1"></span>
     <span class="petal p2"></span>
     <span class="petal p3"></span>
@@ -48,11 +48,11 @@
           src="images/sakura.png"
           width="200"
           height="200"
-          alt="drawn sakura picture"
+          alt="Drawn sakura picture"
         />
       </figure>
 
-      <section class="formzone" aria-label="Mad Lib form">
+      <section class="formzone">
         <h2 class="panel-title">Fill the blanks</h2>
         <p class="microcopy">
           All fields required. Your words will be highlighted in the final story.
@@ -73,7 +73,7 @@
             <input id="adverb1" type="text" required placeholder="politely" />
 
             <label for="place">Place</label>
-            <input id="place" type="text" required placeholder="campus quad" />
+            <input id="place" type="text" required placeholder="arboretum" />
 
             <label for="noun2">Noun (snack/thing)</label>
             <input id="noun2" type="text" required placeholder="mochi" />
@@ -90,11 +90,11 @@
     </div>
 
     <!-- overlay -->
-    <section class="overlay" id="overlay" aria-hidden="true">
-      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+    <section class="overlay" id="overlay">
+      <div class="modal">
         <div class="modal-top">
           <h2 id="resultTitle">Your Story</h2>
-          <button type="button" class="icon" id="closeBtn" aria-label="Close">✕</button>
+          <button type="button" class="icon" id="closeBtn">✕</button>
         </div>
 
         <p class="story" id="storyOut">
@@ -108,7 +108,5 @@
       </div>
     </section>
   </main>
-
-
 </body>
 </html>

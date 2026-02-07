@@ -33,14 +33,8 @@ body{
 }
 
 @keyframes pageFade{
-  from{
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to{
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from{ opacity: 0; transform: translateY(14px); }
+  to{ opacity: 1; transform: translateY(0); }
 }
 
 /* falling petals */
@@ -97,18 +91,13 @@ body{
 .p11 { left: 86%; --drift: 160px; width: 20px; height: 15px; animation-duration: 29s, 8.2s; animation-delay: 3.1s, 0s; }
 .p12 { left: 94%; --drift: 105px; width: 15px; height: 12px; animation-duration: 24s, 6.8s; animation-delay: 1.0s, 0s; }
 
-@media (prefers-reduced-motion: reduce){
-  body{ animation: none; opacity: 1; transform: none; }
-  .petal{ animation: none; }
-}
-
 /* header */
-.site-header, .wrap, .site-footer{
+.site-header, .wrap{
   max-width: 1100px;
   margin: 0 auto;
   padding: 16px 18px;
   position: relative;
-  z-index: 3; 
+  z-index: 3;
 }
 
 .site-header{
@@ -126,7 +115,6 @@ h1{
   margin:0;
   font-family: Fredoka, Inter, system-ui, sans-serif;
   font-size: 2.25rem;
-  letter-spacing: .2px;
 }
 
 .tag{
@@ -144,41 +132,32 @@ h1{
   color: var(--muted);
 }
 
-/* main panel */
+/* main panel (FIXED) */
 .panel{
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
-
---panel: rgba(255,255,255,.72);
+  background: var(--panel);   /* <-- this was the bug fix */
   border: 1px solid var(--stroke);
   border-radius: var(--r-lg);
   padding: var(--pad);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(10px);
 }
 
 /* art */
 .art{
   margin:0;
   display:grid;
-  gap: 10px;
   align-content: start;
 }
 
 .art img{
-  width: 100%;
-  height: auto;
+  width: 200px;
+  height: 200px;
   display:block;
   border-radius: 14px;
   border: 1px solid rgba(255, 88, 170, .18);
   box-shadow: 0 12px 26px rgba(74, 18, 45, .10);
-  transition: transform 220ms ease, filter 220ms ease;
-}
-
-.art img:hover{
-  transform: rotate(-0.35deg) scale(1.01);
-  filter: saturate(1.06);
 }
 
 /* form */
@@ -209,7 +188,6 @@ h1{
 label{
   font-size: .92rem;
   color: var(--muted);
-  align-self: end;
 }
 
 input[type="text"]{
@@ -228,6 +206,10 @@ input[type="text"]:focus{
   box-shadow: 0 12px 20px rgba(255, 88, 170, .18);
 }
 
+input::placeholder{
+  color: rgba(35, 15, 26, 0.25);
+}
+
 .actions{
   display:flex;
   gap: 10px;
@@ -243,7 +225,6 @@ input[type="submit"], button{
   color: var(--ink);
   font-weight: 600;
   cursor:pointer;
-  transition: transform 160ms ease, background 160ms ease;
 }
 
 button{
@@ -251,28 +232,8 @@ button{
   background: rgba(215, 193, 255, .18);
 }
 
-input[type="submit"]:hover, button:hover{
-  transform: translateY(-1px);
-  background: rgba(255, 88, 170, .16);
-}
-
-input[type="submit"]:active, button:active{
-  transform: translateY(0);
-}
-
-input::placeholder{
-  color: rgba(35, 15, 26, 0.25);
-}
-
 .fineprint{
   margin: 8px 0 0 0;
-  color: var(--muted);
-  font-size: .9rem;
-}
-
-/* footer */
-.site-footer p{
-  margin: 10px 0 0 0;
   color: var(--muted);
   font-size: .9rem;
 }
@@ -285,21 +246,16 @@ input::placeholder{
   place-items: center;
   padding: 18px;
   background: rgba(35, 15, 26, .32);
-  z-index: 10; 
+  z-index: 10;
 }
 
 .overlay.active{
-  display:grid;
-  animation: fadeIn 220ms ease;
-}
-
-@keyframes fadeIn{
-  from{ opacity: 0; }
-  to{ opacity: 1; }
+  display: grid;
 }
 
 .modal{
-  width: min(820px, 92vw);
+  width: 800px;
+  max-width: 92vw;
   background: rgba(255,255,255,.92);
   border: 1px solid rgba(255, 88, 170, .22);
   border-radius: 20px;
@@ -314,18 +270,6 @@ input::placeholder{
   gap: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(255, 88, 170, .14);
-}
-
-.modal-top h2{ margin:0; }
-
-.icon{
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 88, 170, .26);
-  background: rgba(255, 88, 170, .10);
-  display:grid;
-  place-items:center;
 }
 
 .story{
@@ -343,17 +287,7 @@ input::placeholder{
 
 .muted{ color: var(--muted); }
 
-.modal-actions{
-  margin-top: 14px;
-  display:flex;
-  gap: 10px;
-}
-
-.primary{
-  background: rgba(255, 88, 170, .16);
-}
-
-/* responsive extra credit */
+/* responsive (optional) */
 @media (max-width: 860px){
   .panel{ grid-template-columns: 1fr; }
   .grid{ grid-template-columns: 1fr; }
