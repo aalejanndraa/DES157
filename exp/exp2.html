@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Experiment 2</title>
+
+  <style>
+    body{
+      font-family: Arial;
+      line-height: 1.5em;
+      text-align: center;
+      padding: 40px;
+    }
+
+    #box{
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #000;
+    }
+
+    .big { font-size: 1.4em; }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <h1>Guessing Game Experiment</h1>
+    <p class="big">Pick a number 1 to 10. The computer will try to guess your number!</p>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    // The computer asks user for a numer 1-10 then the computer tries to guess what number was chosen. 
+    // The page then shows how many guesses it took and suggests a random food treat from an array.
+
+    var outputDiv = document.querySelector('#output');
+
+    var foods = ["cheese", "fruit", "chicken", "pie", "tacos", "cookies"];
+
+    function randomInt(min, max){
+      var numOfValues = max - min + 1;
+      var randomNum = Math.random();
+      var randomVal = randomNum * numOfValues;
+      var roundedRandomVal = Math.floor(randomVal);
+      var finalNum = min + roundedRandomVal;
+      return finalNum;
+    }
+
+    function getUserNumber(){
+      var userNum = prompt("Enter a number between 1 and 10");
+      return Number(userNum);
+    }
+
+    function getTreat(foodArray){
+      var index = randomInt(0, foodArray.length - 1);
+      return foodArray[index];
+    }
+
+    function playGame(){
+      var userNumber = getUserNumber();
+
+      if (userNumber < 1 || userNumber > 10 || userNumber !== userNumber) {
+        outputDiv.innerHTML = "<h2>Oops!</h2><p>Please refresh and enter a number from 1 to 10.</p>";
+        return;
+      }
+
+      var guess = 0;
+      var tries = 0;
+      var guessList = "";
+
+      while (guess !== userNumber) {
+        guess = randomInt(1, 10);
+        tries = tries + 1;
+        guessList = guessList + guess + " ";
+      }
+
+      var treat = getTreat(foods);
+
+      //Bold certain words for more clarity 
+      outputDiv.innerHTML =
+        "<h2>Correct!</h2>" +
+        "<p>The computer guessed your number: <strong>" + userNumber + "</strong></p>" +
+        "<p>It took <strong>" + tries + "</strong> tries.</p>" +
+        "<p><strong>Guesses:</strong> " + guessList + "</p>" +
+        "<p>Thanks for playing — treat yourself to some <strong>" + treat + "</strong>!</p>";
+    }
+
+    playGame();
+  </script>
+
+</body>
+</html>
