@@ -10,6 +10,8 @@
   const resetBtn = document.querySelector("#resetBtn");
   const againBtn = document.querySelector("#againBtn");
 
+  const formError = document.querySelector("#formError");
+
   function wrapWord(word) {
     return `<span class="user-word">${word}</span>`;
   }
@@ -27,22 +29,49 @@
     overlay.classList.remove("active");
   }
 
+  function showError(message) {
+    formError.textContent = message;
+  }
+
+  function clearError() {
+    formError.textContent = "";
+  }
+
+  function focusFirstEmpty(fields) {
+    for (let i = 0; i < fields.length; i++) {
+      if (!fields[i].value.trim()) {
+        fields[i].focus();
+        return true;
+      }
+    }
+    return false;
+  }
+
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const adj1 = document.querySelector("#adj1").value.trim();
-    const noun1 = document.querySelector("#noun1").value.trim();
-    const verb1 = document.querySelector("#verb1").value.trim();
-    const adverb1 = document.querySelector("#adverb1").value.trim();
-    const place = document.querySelector("#place").value.trim();
-    const noun2 = document.querySelector("#noun2").value.trim();
+    const fields = [
+      document.querySelector("#adj1"),
+      document.querySelector("#noun1"),
+      document.querySelector("#verb1"),
+      document.querySelector("#adverb1"),
+      document.querySelector("#place"),
+      document.querySelector("#noun2")
+    ];
 
-    if (!adj1 || !noun1 || !verb1 || !adverb1 || !place || !noun2) {
-      storyOut.innerHTML =
-        `<span class="muted">Please fill in all the fields so your story can bloom 🌸</span>`;
-      openOverlay();
+    if (focusFirstEmpty(fields)) {
+      showError("Please fill in all fields so your story can bloom 🌸");
       return;
     }
+
+    clearError();
+
+    const adj1 = fields[0].value.trim();
+    const noun1 = fields[1].value.trim();
+    const verb1 = fields[2].value.trim();
+    const adverb1 = fields[3].value.trim();
+    const place = fields[4].value.trim();
+    const noun2 = fields[5].value.trim();
 
     const article = getArticle(adj1);
 
@@ -64,6 +93,10 @@
     openOverlay();
   });
 
+  form.addEventListener("input", function () {
+    clearError();
+  });
+
   closeBtn.addEventListener("click", closeOverlay);
 
   overlay.addEventListener("click", function (event) {
@@ -71,12 +104,15 @@
   });
 
   againBtn.addEventListener("click", function () {
+    form.reset();
+    clearError();
     closeOverlay();
     document.querySelector("#adj1").focus();
   });
 
   resetBtn.addEventListener("click", function () {
     form.reset();
+    clearError();
     closeOverlay();
     document.querySelector("#adj1").focus();
   });

@@ -221,11 +221,16 @@ input[type="text"]:focus{
   box-shadow: 0 12px 20px rgba(255, 88, 170, .18);
 }
 
-.actions{
-  display:flex;
-  gap: 10px;
-  align-items:center;
-  margin-top: 8px;
+.actions {
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+.error {
+  margin: 8px 0 0 0;
+  color: rgba(190, 45, 90, 0.95);
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 input[type="submit"], button{
