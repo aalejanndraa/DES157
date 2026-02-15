@@ -1,4 +1,6 @@
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -40,10 +42,12 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.10);
   background: rgba(255, 255, 255, 0.85);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .back:hover {
   background: #ffffff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .card {
@@ -54,6 +58,13 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.10);
   background: rgba(255, 255, 255, 0.85);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.15);
 }
 
 .entry {
@@ -63,6 +74,10 @@ body {
 .accent {
   width: 18px;
   background: rgba(0, 0, 0, 0.18);
+}
+
+.entry:first-of-type .accent {
+  background: #111;
 }
 
 .content {
@@ -77,16 +92,22 @@ body {
 
 .date {
   margin: 0 0 16px;
-  font-size: 0.875rem; 
-  color: #666;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #888;
 }
 
 .content p {
   max-width: 65ch;
 }
 
-.link-row {
+.content p + p {
   margin-top: 14px;
+}
+
+.link-row {
+  margin-top: 16px;
 }
 
 .content a {
@@ -94,6 +115,7 @@ body {
   text-decoration: underline;
   text-underline-offset: 4px;
   font-weight: 600;
+  transition: color 0.2s ease;
 }
 
 .content a:hover {
@@ -104,4 +126,23 @@ body {
   margin-top: 12px;
   color: #444;
   font-size: 0.875rem;
+}
+
+@media (max-width: 600px) {
+  .entry {
+    flex-direction: column;
+  }
+
+  .accent {
+    width: 100%;
+    height: 8px;
+  }
+
+  .content {
+    padding: 22px;
+  }
+
+  .page-title {
+    font-size: 1.9rem;
+  }
 }
