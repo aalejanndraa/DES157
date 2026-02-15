@@ -1,115 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learning Journal</title>
+<main class="container">
 
-  <link rel="stylesheet" href="../normalize.css" />
+  <!-- NEWEST POST -->
+  <article class="card entry">
+    <div class="accent"></div>
+    <div class="content">
+      <h2>Journal #3</h2>
+      <p class="date">
+        <time datetime="2026-02-10">February 10, 2026</time>
+      </p>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+      <p>
+        While looking through “10 Intriguing Photographs to Teach Close Reading & Visual Thinking Skills”
+        from The New York Times Learning Network, I was reminded of what I call visual thinking — slowing down.
+      </p>
 
-  <link rel="stylesheet" href="styles.css" />
-</head>
+      <p>
+        The three open-ended questions of “What’s going on?”, “What do you see that makes you say that?”,
+        and “What more can you find?” were easy to understand, however they require evidence-based
+        observations. As a designer, I recognize this is exactly how I critique my own work — not only
+        responding emotionally, but supporting my responses with visual evidence. This reinforces my
+        belief that images require active reading; they provide meaning beyond what they appear to show.
+      </p>
 
-<body>
+      <p>
+        For inspiration, I explored Mr. Panda’s Psychologically Safe Portfolio. The website uses soft
+        illustrations, playful animation, and interactive storytelling to communicate personality and
+        values. Its strongest quality is how visual and interactive elements reinforce the concept of
+        psychological safety through rounded shapes, warm colors, and gentle movement. One drawback
+        is that some animations slightly detract from readability, which could overwhelm users.
+        Overall, image and interaction are most effective when conceptually aligned rather than purely decorative.
+      </p>
 
-  <header class="top">
-    <div class="container">
-      <a class="back" href="../index.html">← Back</a>
-      <h1 class="page-title">Learning Journal</h1>
-      <p class="page-subtitle">
-        Reflections on readings and what I’m learning in class.
+      <p class="link-row">
+        Article link:
+        <a href="https://archive.nytimes.com/learning.blogs.nytimes.com/2015/02/27/10-intriguing-photographs-to-teach-close-reading-and-visual-thinking-skills/"
+           target="_blank" rel="noopener">
+          10 Intriguing Photographs to Teach Close Reading & Visual Thinking Skills
+        </a>
+      </p>
+
+      <p class="link-row">
+        Website example:
+        <a href="https://www.mr-pandas-psychologically-safe-portfolio.com/"
+           target="_blank" rel="noopener">
+          Mr. Panda’s Psychologically Safe Portfolio
+        </a>
       </p>
     </div>
-  </header>
+  </article>
 
-  <main class="container">
 
-    <!-- NEWEST POST -->
-    <article class="card entry">
-      <div class="accent"></div>
-      <div class="content">
-        <h2>Journal #2</h2>
-        <p class="date">
-          <time datetime="2026-01-20">January 20, 2026</time>
-        </p>
+  <!-- SECOND NEWEST -->
+  <article class="card entry">
+    <div class="accent"></div>
+    <div class="content">
+      <h2>Journal #2</h2>
+      <p class="date">
+        <time datetime="2026-01-29">January 29, 2026</time>
+      </p>
 
-        <p>
-          After reading Salim Ansari’s “Best Practices for Form Design,” I began to see how the overall
-          thoughtful structure of a form affects how completed it gets. By reducing the amount of
-          information needed to only what is required, you reduce the cognitive load on the user and
-          make the form feel quicker to complete. When users feel less overwhelmed, they are more
-          likely to finish the form.
-        </p>
+      <p>
+        In Naema Baskanderi’s article, it points out how modal windows can be beneficial but are frequently overused.
+        Modals are designed to call attention and help users stay on task; however, users have been conditioned to
+        rapidly dismiss them since they interrupt the workflow. Another important point I took away from the
+        article was the need for users to have a clear mechanism to “escape” from modal dialogs, such as a visible
+        close button or the escape key. The author also provided valuable insights into accessibility, including
+        keyboard controls for managing focus within modals. Overall, the article made me think about how
+        modals should be initiated by users and used purposefully rather than automatically.
+      </p>
 
-        <p>
-          I also found it interesting that one of the best practices for forms is to use a single-column
-          layout with labels above the input field. This creates a smoother flow and minimizes confusion.
-          Clear error messages also stood out to me because they help users correct mistakes without
-          feeling blamed.
-        </p>
+      <p class="link-row">
+        Article link:
+        <a href="https://uxplanet.org/best-practices-for-modals-overlays-dialog-windows-c00c66cddd8c"
+           target="_blank" rel="noopener">
+          Best Practices for Modals / Overlays / Dialog Windows
+        </a>
+      </p>
+    </div>
+  </article>
 
-        <p>
-          A good example of a form that follows these best practices is the Apple account sign-up form.
-          It is clearly laid out, uses everyday language, and provides straightforward directions.
-        </p>
 
-        <p class="link-row">
-          Article link:
-          <a href="https://uxdesign.cc/best-practices-for-form-design-ff5de6ca8e5f"
-             target="_blank" rel="noopener">
-            Best practices for form design
-          </a>
-        </p>
+  <!-- OLDEST POST -->
+  <article class="card entry">
+    <div class="accent"></div>
+    <div class="content">
+      <h2>Journal #1</h2>
+      <p class="date">
+        <time datetime="2026-01-20">January 20, 2026</time>
+      </p>
 
-        <p class="link-row">
-          Form example:
-          <a href="https://appleid.apple.com/account"
-             target="_blank" rel="noopener">
-            Apple ID sign-up
-          </a>
-        </p>
+      <p>
+        After reading Salim Ansari’s “Best Practices for Form Design,” I began to see how the thoughtful
+        structure of a form affects completion rates. By reducing the information required to only what is
+        necessary, you reduce cognitive load and make the form feel quicker to complete. When users feel
+        less overwhelmed, they are more likely to finish the form.
+      </p>
 
-        <p class="mini-note">
-          The Apple sign-up form works well because it uses a clean single-column layout,
-          clear labels, and only asks for necessary information.
-        </p>
-      </div>
-    </article>
+      <p>
+        I also found it interesting that one of the best practices for forms is using a single-column layout
+        with labels above the input field. This creates a smoother flow and minimizes confusion. Clear
+        error messages also stood out to me because they help users correct mistakes without feeling blamed.
+      </p>
 
-    <!-- OLDER POST -->
-    <article class="card entry">
-      <div class="accent"></div>
-      <div class="content">
-        <h2>Journal #1</h2>
-        <p class="date">
-          <time datetime="2026-01-29">January 29, 2026</time>
-        </p>
+      <p>
+        A good example of a form that follows these best practices is the Apple account sign-up form.
+        It is clearly laid out, uses everyday language, and provides straightforward directions.
+      </p>
 
-        <p>
-          In Naema Baskanderi’s article, it points out how modal windows can be beneficial but are frequently overused.
-          Modals are designed to call attention and help users stay on task; however, users have been conditioned to
-          rapidly dismiss them since they interrupt the work process. Another important point I took away from the
-          article was the need for users to have a mechanism to “escape” from modal dialogs, such as a clearly defined
-          close button or an escape key on their keyboard. The author also provided valuable insights into accessibility,
-          including keyboard controls for managing focus within modals. Overall, the article made me think about how
-          modals should be initiated by users and used purposefully rather than automatically.
-        </p>
+      <p class="link-row">
+        Article link:
+        <a href="https://uxdesign.cc/best-practices-for-form-design-ff5de6ca8e5f"
+           target="_blank" rel="noopener">
+          Best practices for form design
+        </a>
+      </p>
 
-        <p class="link-row">
-          Article link:
-          <a href="https://uxplanet.org/best-practices-for-modals-overlays-dialog-windows-c00c66cddd8c"
-             target="_blank" rel="noopener">
-            Best Practices for Modals / Overlays / Dialog Windows
-          </a>
-        </p>
-      </div>
-    </article>
+      <p class="link-row">
+        Form example:
+        <a href="https://appleid.apple.com/account"
+           target="_blank" rel="noopener">
+          Apple ID sign-up
+        </a>
+      </p>
 
-  </main>
+      <p class="mini-note">
+        The Apple sign-up form works well because it uses a clean single-column layout,
+        clear labels, and only asks for necessary information.
+      </p>
+    </div>
+  </article>
 
-</body>
-</html>
+</main>
