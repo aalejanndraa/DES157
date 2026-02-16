@@ -128,19 +128,17 @@ body {
   font-size: 0.875rem;
 }
 
-/* ---------- NEW: journal images (small + horizontal) ---------- */
-
 .journal-figure {
   margin: 14px 0 18px;
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;          /* wraps if needed */
+  flex-wrap: wrap;        
   align-items: center;
 }
 
 .journal-figure img {
-  width: 150px;             /* small */
-  height: 100px;            /* keeps them uniform */
+  width: 150px;             
+  height: 100px;           
   object-fit: cover;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.10);
@@ -153,13 +151,10 @@ body {
   color: #777;
 }
 
-/* for your single image figure */
 .journal-figure.single img {
   width: 220px;
   height: 140px;
 }
-
-/* ---------- responsive ---------- */
 
 @media (max-width: 600px) {
   .entry {
