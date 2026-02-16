@@ -128,6 +128,39 @@ body {
   font-size: 0.875rem;
 }
 
+/* ---------- NEW: journal images (small + horizontal) ---------- */
+
+.journal-figure {
+  margin: 14px 0 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;          /* wraps if needed */
+  align-items: center;
+}
+
+.journal-figure img {
+  width: 150px;             /* small */
+  height: 100px;            /* keeps them uniform */
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.journal-figure figcaption {
+  flex-basis: 100%;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* for your single image figure */
+.journal-figure.single img {
+  width: 220px;
+  height: 140px;
+}
+
+/* ---------- responsive ---------- */
+
 @media (max-width: 600px) {
   .entry {
     flex-direction: column;
@@ -144,5 +177,15 @@ body {
 
   .page-title {
     font-size: 1.9rem;
+  }
+
+  .journal-figure img {
+    width: 120px;
+    height: 86px;
+  }
+
+  .journal-figure.single img {
+    width: 200px;
+    height: 130px;
   }
 }
