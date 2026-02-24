@@ -2,31 +2,31 @@
   "use strict";
   console.log("reading js");
 
-  // grabbing the stuff we need for the interaction
+  // grabbing the main elements we need for the interaction
   const img = document.querySelector("#heroImg");
   const card = document.querySelector(".card");
   const belowStory = document.querySelector("#belowStory");
 
-  // if anything is missing, just stop so it doesn't break
+  // if something didn’t load correctly, just stop the script
   if (!img || !card || !belowStory) return;
 
-  // this is the spot in the image where the mirror basically is
-  // if it zooms slightly off, tweak these numbers a bit
+  // approximate position of the mirror inside the image
+  // if the zoom feels slightly off, these numbers can be adjusted
   const target = { x: 0.74, y: 0.30 };
 
-  // zoom range (not too crazy so it stays readable)
+  // min and max zoom levels
   const zoomMin = 1.0;
   const zoomMax = 2.2;
 
-  // used so the story doesn't instantly flip the second you reach the mirror
+  // used so the flip doesn’t happen instantly
   let storyTimer = null;
 
-  // keeps a value from going past min/max
+  // keeps numbers between a min and max value
   function clamp(n, min, max) {
     return Math.max(min, Math.min(max, n));
   }
 
-  // adds/removes class that switches front/back panels
+  // toggles the class that reveals the back story panel
   function setStory(on) {
     if (on) {
       card.classList.add("is-story");
@@ -35,44 +35,47 @@
     }
   }
 
-  // main function: scroll = zoom + then reveal story
+  // main scroll interaction
   function setZoomAndReveal() {
+
     const rect = card.getBoundingClientRect();
     const vh = window.innerHeight || 1;
 
-    // this controls where the "zoom zone" starts/ends while you scroll
+    // define the scroll zone where zooming happens
     const start = vh * 0.20;
     const end = vh * 0.80;
 
-    // progress goes from 0 to 1 while the card moves through that zone
+    // calculate progress from 0 to 1
     const progress = clamp((start - rect.top) / (end - start), 0, 1);
 
-    // calculate zoom based on progress
+    // calculate zoom amount
     const z = zoomMin + (zoomMax - zoomMin) * progress;
 
-    // figure out how to translate while zooming so it aims at the mirror
     const w = rect.width;
     const h = rect.height;
 
+    // center of card
     const centerX = w * 0.5;
     const centerY = h * 0.5;
 
+    // mirror position
     const targetX = w * target.x;
     const targetY = h * target.y;
 
+    // shift image so zoom focuses on mirror
     const dx = (centerX - targetX) * (z - 1);
     const dy = (centerY - targetY) * (z - 1);
 
     img.style.transform = `translate(${dx}px, ${dy}px) scale(${z})`;
 
-    // story below fades in once you're past the first part of the zoom
+    // fade in the story section below after some scrolling
     if (progress >= 0.55) {
       belowStory.classList.add("is-on");
     } else {
       belowStory.classList.remove("is-on");
     }
 
-    // when you're basically at the mirror, wait a sec then flip to story
+    // once zoomed in enough, wait and then flip the card
     const nearMirror = progress >= 0.92;
 
     if (nearMirror) {
@@ -83,7 +86,7 @@
         }, 1400);
       }
     } else {
-      // if you scroll back up, cancel the timer and reset everything
+      // if scrolling back up, reset everything
       if (storyTimer) {
         window.clearTimeout(storyTimer);
         storyTimer = null;
@@ -92,10 +95,13 @@
     }
   }
 
-  // run on scroll and when the window size changes
+  // run when scrolling
   window.addEventListener("scroll", setZoomAndReveal);
+
+  // also update if window size changes
   window.addEventListener("resize", setZoomAndReveal);
 
-  // run once on load so it's not weird at the start
+  // run once on load
   setZoomAndReveal();
+
 })();
