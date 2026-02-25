@@ -1,6 +1,5 @@
 (function () {
   "use strict";
-  console.log("reading js");
 
   // grabbing the main elements we need for the interaction
   const img = document.querySelector("#heroImg");
@@ -16,7 +15,17 @@
 
   // min and max zoom levels
   const zoomMin = 1.0;
-  const zoomMax = 2.2;
+  let zoomMax = 2.2;
+
+  function updateZoomMax() {
+    if (window.innerWidth <= 600) {
+      zoomMax = 1.85;
+    } else {
+      zoomMax = 2.2;
+    }
+  }
+
+  updateZoomMax();
 
   // used so the flip doesn’t happen instantly
   let storyTimer = null;
@@ -37,7 +46,6 @@
 
   // main scroll interaction
   function setZoomAndReveal() {
-
     const rect = card.getBoundingClientRect();
     const vh = window.innerHeight || 1;
 
@@ -99,9 +107,11 @@
   window.addEventListener("scroll", setZoomAndReveal);
 
   // also update if window size changes
-  window.addEventListener("resize", setZoomAndReveal);
+  window.addEventListener("resize", function () {
+    updateZoomMax();
+    setZoomAndReveal();
+  });
 
   // run once on load
   setZoomAndReveal();
-
 })();
