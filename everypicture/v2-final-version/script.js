@@ -15,33 +15,26 @@
 
   // min and max zoom levels
   const zoomMin = 1.0;
-  let zoomMax = 2.2;
+  let zoomMax = 1.9;
 
   function updateZoomMax() {
     if (window.innerWidth <= 600) {
-      zoomMax = 1.85;
+      zoomMax = 1.65;
     } else {
-      zoomMax = 2.2;
+      zoomMax = 1.9;
     }
   }
 
   updateZoomMax();
-
-  // used so the flip doesn’t happen instantly
-  let storyTimer = null;
 
   // keeps numbers between a min and max value
   function clamp(n, min, max) {
     return Math.max(min, Math.min(max, n));
   }
 
-  // toggles the class that reveals the back story panel
-  function setStory(on) {
-    if (on) {
-      card.classList.add("is-story");
-    } else {
-      card.classList.remove("is-story");
-    }
+  // makes zoom feel faster at the beginning (so it reaches the mirror quicker)
+  function easeOutQuad(t) {
+    return 1 - (1 - t) * (1 - t);
   }
 
   // main scroll interaction
@@ -50,11 +43,13 @@
     const vh = window.innerHeight || 1;
 
     // define the scroll zone where zooming happens
-    const start = vh * 0.20;
-    const end = vh * 0.80;
+    // improvement: shorter zone = faster zoom (feels like one scroll)
+    const start = vh * 0.25;
+    const end = vh * 0.45;
 
     // calculate progress from 0 to 1
-    const progress = clamp((start - rect.top) / (end - start), 0, 1);
+    const raw = clamp((start - rect.top) / (end - start), 0, 1);
+    const progress = easeOutQuad(raw);
 
     // calculate zoom amount
     const z = zoomMin + (zoomMax - zoomMin) * progress;
@@ -76,30 +71,12 @@
 
     img.style.transform = `translate(${dx}px, ${dy}px) scale(${z})`;
 
-    // fade in the story section below after some scrolling
-    if (progress >= 0.55) {
+    // fade in the story section below after zooming closer to the mirror
+    // improvement: story appears later so users see the mirror first
+    if (progress >= 0.85) {
       belowStory.classList.add("is-on");
     } else {
       belowStory.classList.remove("is-on");
-    }
-
-    // once zoomed in enough, wait and then flip the card
-    const nearMirror = progress >= 0.92;
-
-    if (nearMirror) {
-      if (!storyTimer && !card.classList.contains("is-story")) {
-        storyTimer = window.setTimeout(() => {
-          setStory(true);
-          storyTimer = null;
-        }, 1400);
-      }
-    } else {
-      // if scrolling back up, reset everything
-      if (storyTimer) {
-        window.clearTimeout(storyTimer);
-        storyTimer = null;
-      }
-      setStory(false);
     }
   }
 
