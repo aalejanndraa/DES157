@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Pig: Volleyball Edition</title>
+
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Game of Pig</h1>
+        <p>Volleyball Edition</p>
+    </header>
+
+    <main>
+        <section class="player-card active-player">
+            <h2>Player 1</h2>
+            <p class="label">Match Score</p>
+            <p class="score">18</p>
+            <p class="label">Rally Points</p>
+            <p class="turn-score">7</p>
+        </section>
+
+        <section class="court">
+            <article class="status">
+                <h2>Current Rally</h2>
+                <p>Player 1's turn</p>
+            </article>
+
+            <section class="ball-zone" aria-label="Volleyball display area">
+                <div class="ball-glow"></div>
+                <div class="volleyball" aria-hidden="true">
+                    <span class="line one"></span>
+                    <span class="line two"></span>
+                    <span class="line three"></span>
+                    <span class="curve one"></span>
+                    <span class="curve two"></span>
+                </div>
+            </section>
+
+            <article class="message">
+                <p>Ace! Player 1 is building momentum.</p>
+            </article>
+
+            <nav aria-label="Game controls">
+                <button type="button">Serve</button>
+                <button type="button">Pass</button>
+                <button type="button">New Match</button>
+            </nav>
+        </section>
+
+        <section class="player-card">
+            <h2>Player 2</h2>
+            <p class="label">Match Score</p>
+            <p class="score">24</p>
+            <p class="label">Rally Points</p>
+            <p class="turn-score">3</p>
+        </section>
+    </main>
+
+
+</body>
+</html>

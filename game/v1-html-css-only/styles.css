@@ -1,0 +1,266 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    min-width: 800px;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Fredoka", sans-serif;
+    color: #1f3a5f;
+    background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.6), transparent 35%),
+        linear-gradient(180deg, #bfe2ff 0%, #e6f6ff 45%, #fff4ee 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    padding: 10px 0 5px;
+}
+
+header h1 {
+    margin: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 64px;
+    letter-spacing: 3px;
+    color: #1f3a5f;
+    line-height: 1;
+}
+
+header p {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ff9c66;
+}
+
+main {
+    width: 1200px;
+    height: 750px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    gap: 20px;
+}
+
+.player-card {
+    background: linear-gradient(180deg, #ffffff 0%, #fff7fc 100%);
+    border: 4px solid #88cdfd;
+    border-radius: 30px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.08),
+        inset 0 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.active-player {
+    border-color: #ffbf61;
+    box-shadow:
+        0 14px 34px rgba(255, 180, 84, 0.35),
+        inset 0 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.player-card h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: #1f3a5f;
+}
+
+.label {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #6c86a8;
+}
+
+.score {
+    margin: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 90px;
+    line-height: 1;
+    color: #f4a63b;
+}
+
+.turn-score {
+    margin: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 55px;
+    line-height: 1;
+    color: #1f3a5f;
+}
+
+
+.court {
+    position: relative;
+    border: 5px solid #ffffff;
+    border-radius: 35px;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    gap: 20px;
+    background: linear-gradient(180deg, #a7e3b7 0%, #7ecf9d 100%);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    z-index: 0;
+}
+
+.court::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            to right,
+            transparent 49.4%,
+            rgba(255, 255, 255, 0.75) 49.4%,
+            rgba(255, 255, 255, 0.75) 50.6%,
+            transparent 50.6%
+        ),
+        linear-gradient(
+            to bottom,
+            transparent 69%,
+            rgba(255, 255, 255, 0.75) 69%,
+            rgba(255, 255, 255, 0.75) 70.5%,
+            transparent 70.5%
+        );
+    pointer-events: none;
+    z-index: -1;
+}
+
+.status,
+.ball-zone,
+.message,
+nav {
+    position: relative;
+    z-index: 1;
+}
+
+.status {
+    background: rgba(255, 255, 255, 0.88);
+    border: 4px solid #ffffff;
+    border-radius: 25px;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 8px 18px rgba(78, 137, 108, 0.12);
+}
+
+.status h2 {
+    margin: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 34px;
+    letter-spacing: 2px;
+    color: #1f3a5f;
+}
+
+.status p {
+    margin: 5px 0 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #35567d;
+}
+
+/* trying to. make vball */
+
+.ball-zone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.ball-glow {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    position: absolute;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.2) 60%,
+        transparent 80%
+    );
+}
+
+.volleyball-img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.2));
+    transition: transform 0.25s ease;
+}
+
+.volleyball-img:hover {
+    transform: rotate(15deg) scale(1.05);
+}
+
+
+.message {
+    background: linear-gradient(180deg, #fff8df 0%, #ffeeb4 100%);
+    border: 3px solid #ffcd5c;
+    border-radius: 25px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 8px 18px rgba(255, 197, 78, 0.18);
+}
+
+.message p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #6e4b00;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    border: 3px solid #ffffff;
+    border-radius: 999px;
+    padding: 12px 28px;
+    min-width: 150px;
+    font-family: "Fredoka", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f3a5f;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+button:first-child {
+    background: linear-gradient(180deg, #ffd87e 0%, #ffbf66 100%);
+    box-shadow: 0 10px 18px rgba(255, 176, 81, 0.22);
+}
+
+button:nth-child(2) {
+    background: linear-gradient(180deg, #ffcde1 0%, #ffb8d3 100%);
+    box-shadow: 0 10px 18px rgba(255, 151, 191, 0.22);
+}
+
+button:nth-child(3) {
+    background: linear-gradient(180deg, #cceeff 0%, #b8e2ff 100%);
+    box-shadow: 0 10px 18px rgba(130, 202, 255, 0.22);
+}
+
