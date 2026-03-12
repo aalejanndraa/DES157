@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Pig: Volleyball Edition</title>
+
+    <link rel="stylesheet" href="normalize.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Game of Pig</h1>
+        <p>Volleyball Edition</p>
+    </header>
+
+    <main>
+        <section class="player-card active-player" id="player1">
+            <h2>Player 1</h2>
+
+            <p class="label">Match Score</p>
+            <p class="score" id="score1">0</p>
+
+            <p class="label">Rally Points</p>
+            <p class="turn-score" id="turn1">0</p>
+        </section>
+
+        <section class="court">
+            <article class="status">
+                <h2>Current Rally</h2>
+                <p id="rally-status">Player 1's turn</p>
+            </article>
+
+            <section class="ball-zone" aria-label="Volleyball display area">
+                <img src="images/vball.png" alt="Illustration of a volleyball" class="volleyball-img" width="500" height="500">
+            </section>
+
+            <article class="message">
+                <p id="game-message">Press Serve to start the match.</p>
+            </article>
+
+            <nav aria-label="Game controls">
+                <button type="button" id="serve">Serve</button>
+                <button type="button" id="pass">Pass</button>
+                <button type="button" id="newmatch">New Match</button>
+            </nav>
+        </section>
+
+        <section class="player-card" id="player2">
+            <h2>Player 2</h2>
+
+            <p class="label">Match Score</p>
+            <p class="score" id="score2">0</p>
+
+            <p class="label">Rally Points</p>
+            <p class="turn-score" id="turn2">0</p>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="sources.html">Sources</a></p>
+    </footer>
+
+    <audio id="hit-sound" src="audio/hit.mp3" preload="auto"></audio>
+    <audio id="winner-sound" src="audio/winner.mp3" preload="auto"></audio>
+</body>
+</html>

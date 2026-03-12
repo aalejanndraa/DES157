@@ -61,7 +61,6 @@ body {
   box-shadow: var(--shadow-soft);
 }
 
-
 .banner__text {
   position: absolute;
   inset: 0;
@@ -89,7 +88,6 @@ body {
   font-weight: 600;
   color: var(--text-muted-dark);
 }
-
 
 .petal {
   position: absolute;
